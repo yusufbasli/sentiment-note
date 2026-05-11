@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.DS_Store
+.env.local
+.env
+
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.pytest_cache/
+backend/.venv/
+
+.vscode/
+.idea/
+*.swp

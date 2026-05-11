@@ -1,0 +1,122 @@
+.dashboard {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  font-weight: 600;
+}
+
+.stat-card.positive {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+}
+
+.stat-card.negative {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.stat-card.neutral {
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+}
+
+.stat-card.total {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-card .emoji {
+  font-size: 2.5em;
+  min-width: 60px;
+  text-align: center;
+}
+
+.stat-card .info {
+  flex: 1;
+}
+
+.stat-card .label {
+  font-size: 0.85em;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.stat-card .value {
+  font-size: 1.8em;
+  margin-bottom: 5px;
+}
+
+.stat-card .percent {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.progress-bar {
+  display: flex;
+  height: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #f0f0f0;
+  gap: 0;
+}
+
+.progress-bar .bar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+  transition: width 0.3s ease;
+  min-width: 40px;
+}
+
+.progress-bar .bar.positive {
+  background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+}
+
+.progress-bar .bar.negative {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+.progress-bar .bar.neutral {
+  background: linear-gradient(90deg, #94a3b8 0%, #64748b 100%);
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-card .emoji {
+    font-size: 2em;
+    min-width: 50px;
+  }
+
+  .stat-card .value {
+    font-size: 1.4em;
+  }
+
+  .dashboard {
+    padding: 15px;
+  }
+}
