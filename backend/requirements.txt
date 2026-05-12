@@ -3,3 +3,5 @@ flask-cors==6.0.2
 python-dotenv==1.2.2
 transformers==5.8.0
 torch==2.11.0
+datasets==3.0.1
+scikit-learn==1.5.1

@@ -12,43 +12,51 @@ const sentimentColor = {
   neutral: '#94a3b8'
 }
 
+const sentimentLabel = {
+  positive: 'Positive',
+  negative: 'Negative',
+  neutral: 'Neutral'
+}
+
 export default function NoteList({ notes, onDeleteNote }) {
   return (
     <div className="note-list">
-      <h2>📝 Tüm Notlar ({notes.length})</h2>
+      <h2>All Notes ({notes.length})</h2>
       {notes.length === 0 ? (
-        <p className="empty-state">Henüz not eklemeddin. Başla! 🚀</p>
+        <p className="empty-state">No notes yet. Start writing!</p>
       ) : (
         <div className="notes-grid">
-          {notes.map(note => (
-            <div
-              key={note.id}
-              className="note-card"
-              style={{ borderLeftColor: sentimentColor[note.sentiment] }}
-            >
-              <div className="note-header">
-                <span className="sentiment-emoji">
-                  {sentimentEmoji[note.sentiment]}
-                </span>
-                <span className="sentiment-label">
-                  {note.sentiment === 'positive' && 'Pozitif'}
-                  {note.sentiment === 'negative' && 'Negatif'}
-                  {note.sentiment === 'neutral' && 'Tarafsız'}
-                </span>
-                <span className="score">({(note.score * 100).toFixed(0)}%)</span>
+          {notes.map(note => {
+            const sentiment = note.sentiment || 'neutral'
+            const color = sentimentColor[sentiment] || sentimentColor.neutral
+            const emoji = sentimentEmoji[sentiment] || sentimentEmoji.neutral
+            const label = sentimentLabel[sentiment] || 'Unknown'
+
+            return (
+              <div
+                key={note.id}
+                className="note-card"
+                style={{ borderLeftColor: color }}
+              >
+                <div className="note-header">
+                  <span className="sentiment-emoji">{emoji}</span>
+                  <span className="sentiment-label">{label}</span>
+                  <span className="score">({Math.round((note.score || 0) * 100)}%)</span>
+                </div>
+                <p className="note-text">{note.text}</p>
+                <div className="note-footer">
+                  <span className="timestamp">{note.timestamp}</span>
+                  <button
+                    className="delete-btn"
+                    onClick={() => onDeleteNote(note.id)}
+                    aria-label="Delete note"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-              <p className="note-text">{note.text}</p>
-              <div className="note-footer">
-                <span className="timestamp">{note.timestamp}</span>
-                <button
-                  className="delete-btn"
-                  onClick={() => onDeleteNote(note.id)}
-                >
-                  🗑️
-                </button>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
     </div>

@@ -1,3 +1,4 @@
+# Python & Virtual Environment
 node_modules/
 dist/
 .DS_Store
@@ -10,6 +11,26 @@ backend/*.pyc
 backend/.pytest_cache/
 backend/.venv/
 
+# IDE
 .vscode/
 .idea/
 *.swp
+*.swo
+*~
+
+# ML Model (too large)
+backend/fine_tuned_model/
+!backend/fine_tuned_model/.gitkeep
+
+# Training data (keep structure only)
+backend/data/*.csv
+!backend/data/.gitkeep
+
+# Logs
+*.log
+backend/logs/
+
+# Temporary files
+*.tmp
+.coverage
+.pytest_cache/
